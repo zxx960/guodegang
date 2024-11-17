@@ -74,7 +74,7 @@ const isDragging = ref(false)
 const previewTime = ref(0)
 const wasPlaying = ref(false)
 
-const emit = defineEmits(['playStateChange'])
+const emit = defineEmits(['playStateChange', 'audioEnded'])
 
 // 计算进度条样式
 const progressBarStyle = computed(() => {
@@ -249,6 +249,10 @@ onMounted(() => {
       currentTime.value = Math.floor(audio.currentTime)
       seekValue.value = currentTime.value
     }
+  })
+
+  audio.addEventListener('ended', () => {
+    emit('audioEnded')
   })
 
   // 添加键盘控制

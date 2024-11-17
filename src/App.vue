@@ -25,7 +25,7 @@
           <div class="my-1 text-xs md:text-sm line-clamp-2">{{item.description}}</div>
         </div>
         <div class="ml-5">
-          <div class="p-2 rounded-full bg-[#f0f0f0] cursor-pointer" @click="playAudio(item.url)">
+          <div class="p-2 rounded-full bg-[#f0f0f0] cursor-pointer" @click="playAudio(item.url, index)">
             <img 
               :src="currentPlayingUrl === item.url && isPlaying ? PauseIcon : PlayIcon" 
               :alt="currentPlayingUrl === item.url && isPlaying ? '暂停' : '播放'" 
@@ -41,6 +41,7 @@
     :audioSrc="audioSrc" 
     :isPlaying="isPlaying"
     @playStateChange="onPlayStateChange"
+    @audioEnded="onAudioEnded"
   />
 </template>
 <script setup>
@@ -53,22 +54,37 @@ import { audioList } from '../config/audio-list.json'
 const audioSrc = ref('')
 const currentPlayingUrl = ref('')
 const isPlaying = ref(false)
+const currentIndex = ref(-1)
 
-function playAudio(url) {
+function playAudio(url, index) {
   if (currentPlayingUrl.value === url) {
     // 如果点击的是当前正在播放的音频，则切换播放状态
     isPlaying.value = !isPlaying.value
   } else {
     // 如果是新的音频，开始播放
     currentPlayingUrl.value = url
+    currentIndex.value = index
     audioSrc.value = url
     isPlaying.value = true
   }
 }
 
+// 播放下一个音频
+function playNext() {
+  if (currentIndex.value === -1) return
+  const nextIndex = (currentIndex.value + 1) % audioList.length
+  const nextAudio = audioList[nextIndex]
+  playAudio(nextAudio.url, nextIndex)
+}
+
 // 监听播放器的播放状态
 const onPlayStateChange = (playing) => {
   isPlaying.value = playing
+}
+
+// 监听音频播放结束
+const onAudioEnded = () => {
+  playNext()
 }
 </script>
 <style scoped>
