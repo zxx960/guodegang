@@ -8,19 +8,19 @@
             <div
               class="absolute top-0 left-0 items-center justify-center w-full h-full bg-gradient-to-t from-gray-900 to-50% to-transparent">
               <div class="flex flex-col absolute bottom-0  px-6">
-                <h1 class="mb-3 text-lg md:text-4xl font-black text-white">天涯神贴播客</h1>
+                <h1 class="mb-3 text-lg md:text-4xl font-black text-white">老郭相声</h1>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="mt-2 py-2 min-w-full bg-[#fff] shadow-md px-6 rounded-lg">将本播客打包下载到本地收听，加微信：zxx960，长期更新（网盘版:￥99，u盘版:￥149）</div>
+    <div class="mt-2 py-2 min-w-full bg-[#fff] shadow-md px-6 rounded-lg">将相声打包下载到本地收听，加微信：zxx960（网盘版:￥29，u盘版:￥79）</div>
     <div class="mt-2 md:mt-2 min-w-full bg-[#fff] shadow-md px-6 rounded-lg">
-      <div class="flex items-center py-6 border-b border-gray-200" v-for="item in audioList">
-        <img src="./assets/cover.jpg" alt="天涯神贴播客" class="shadow-lg rounded-md w-[4.5rem] h-[4.5rem] md:w-24 md:h-24  ">
-        <div class="flex-1 ml-5">
-          <h2 class="md:text-xl text-sm font-semibold ">{{item.name}}</h2>
+      <div class="flex items-center py-3  border-b border-gray-200" v-for="(item, index) in audioList">
+        <!-- <img src="./assets/cover.jpg" alt="老郭相声" class="shadow-lg rounded-md w-[4.5rem] h-[4.5rem] md:w-24 md:h-24  "> -->
+        <div class="flex-1 ml-5 flex items-center">
+          <h2 class="md:text-xl text-sm font-semibold ">{{index+1}}{{item.title}}</h2>
           <div class="text-xs font-medium opacity-60">{{item.time}}</div>
           <div class="my-1 text-xs md:text-sm line-clamp-2">{{item.description}}</div>
         </div>
