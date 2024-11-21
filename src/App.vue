@@ -16,7 +16,7 @@
         </div>
       </div>
     </div>
-    <div class="mt-2 py-2 min-w-full bg-[#fff] shadow-md px-6 rounded-lg">出售车载U盘内含本站所有音频:￥39，加微信：zxx960</div>
+    <div class="mt-2 py-2 min-w-full bg-[#fff] shadow-md px-6 rounded-lg">出售车载U盘内含本站所有音频:￥19，加微信：zxx960</div>
     <div class="mt-2 md:mt-2 min-w-full bg-[#fff] shadow-md px-6 rounded-lg">
       <div class="flex items-center py-3 border-b border-gray-200" v-for="(item, index) in audioList">
         <div class="flex-1 ml-5 flex items-center">
